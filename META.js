@@ -48,6 +48,10 @@ const services = [
         alias: "Google-Gemini",
     },
     {
+        name: "NotebookLM",
+        icon: extractFavicon("notebooklm.google.com"),
+    },
+    {
         name: "Anthropic",
         icon: extractFavicon("www.anthropic.com"),
     },

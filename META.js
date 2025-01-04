@@ -49,7 +49,7 @@ const services = [
     },
     {
         name: "NotebookLM",
-        icon: extractFavicon("notebooklm.google.com"),
+        icon: extractFavicon("notebooklm.google"),
     },
     {
         name: "Anthropic",

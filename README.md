@@ -66,7 +66,7 @@ Alternatively, you can use the pre-generated YAML configuration:
 | ------------------------- | --- |
 | **GitHub Raw** | [https://raw.githubusercontent.com/xixu-me/META/refs/heads/config/META.yaml](https://raw.githubusercontent.com/xixu-me/META/refs/heads/config/META.yaml) |
 
-The YAML configuration is automatically generated from the JavaScript version and updated whenever changes are pushed to the script branch. This provides a static configuration option for users who prefer not to use JavaScript overrides.
+The YAML configuration is automatically generated from the JavaScript version and automatically updated when the JavaScript version changes. This provides a static configuration option for users who prefer not to use JavaScript overrides.
 
 ## Usage Guide
 

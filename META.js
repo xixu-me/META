@@ -50,6 +50,7 @@ const services = [
     {
         name: "NotebookLM",
         icon: extractFavicon("notebooklm.google"),
+        alias: "Google-NotebookLM",
     },
     {
         name: "Anthropic",

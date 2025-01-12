@@ -1,4 +1,4 @@
-# META Enhances Tailored Automation (META)
+# META - META Enhances Tailored Automation
 
 ## Overview
 

@@ -11,7 +11,7 @@ const services = [
     // Routing rules are matched in order from top to bottom, with the rule at the top of the list taking precedence over the rules below it.
     {
         name: "REDnote",
-        icon: extractFavicon("www.xiaohongshu.com"),
+        icon: extractFavicon("xue1.xiaohongshu.com"),
         alias: "Xiaohongshu",
     },
     {

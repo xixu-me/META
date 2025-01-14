@@ -11,7 +11,7 @@ const services = [
     // Routing rules are matched in order from top to bottom, with the rule at the top of the list taking precedence over the rules below it.
     {
         name: "REDnote",
-        icon: extractFavicon("xue1.xiaohongshu.com"),
+        icon: "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://xue1.xiaohongshu.com/&size=256",
         alias: "Xiaohongshu",
     },
     {

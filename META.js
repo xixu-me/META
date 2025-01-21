@@ -10,7 +10,7 @@ const LOCATION_ICON_SET_URL = "https://img.icons8.com/color/144/";
 const services = [
     // Routing rules are matched in order from top to bottom, with the rule at the top of the list taking precedence over the rules below it.
     {
-        name: "REDnote",
+        name: "rednote",
         icon: "https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://xue1.xiaohongshu.com/&size=256",
         alias: "Xiaohongshu",
     },

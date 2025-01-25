@@ -58,7 +58,6 @@ Choose one of the following URLs to import the META:
 | **Xget** | https://xget.us.kg/gh/xixu-me/META/raw/refs/heads/script/META.js |
 | **Xi Xu's Proxy Everything** | https://proxy.xi-xu.me/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fxixu-me%2FMETA%2Frefs%2Fheads%2Fscript%2FMETA.js |
 | **jsDelivr** | https://cdn.jsdelivr.net/gh/xixu-me/META@refs/heads/script/META.js |
-| **GitHub Proxy** | https://ghp.ci/https://raw.githubusercontent.com/xixu-me/META/refs/heads/script/META.js |
 
 Alternatively, you can use the pre-generated YAML configuration:
 

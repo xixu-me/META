@@ -40,8 +40,8 @@ const services = [
         icon: extractFavicon("www.binance.com"),
     },
     {
-        name: "Perplexity",
-        icon: extractFavicon("www.perplexity.ai"),
+        name: "xAI",
+        icon: extractFavicon("x.ai"),
     },
     {
         name: "OpenAI",
@@ -60,6 +60,10 @@ const services = [
     {
         name: "Anthropic",
         icon: extractFavicon("www.anthropic.com"),
+    },
+    {
+        name: "Perplexity",
+        icon: extractFavicon("www.perplexity.ai"),
     },
     {
         name: "Apple",

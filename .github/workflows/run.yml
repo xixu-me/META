@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  the-workflow:
+  check-script:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

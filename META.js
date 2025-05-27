@@ -10,27 +10,6 @@ const LOCATION_ICON_SET_URL = "https://img.icons8.com/color/144/";
 const services = [
   // Routing rules are matched in order from top to bottom, with the rule at the top of the list taking precedence over the rules below it.
   {
-    name: "bilibili",
-    icon: `${BASE_ICON_SET_URL}bilibili_2.png`,
-  },
-  {
-    name: "YouTube",
-    icon: `${BASE_ICON_SET_URL}YouTube.png`,
-  },
-  {
-    name: "Telegram",
-    icon: `${BASE_ICON_SET_URL}Telegram_X.png`,
-  },
-  {
-    name: "X",
-    icon: `${BASE_ICON_SET_URL}X.png`,
-    alias: "Twitter",
-  },
-  {
-    name: "Binance",
-    icon: extractFavicon("www.binance.com"),
-  },
-  {
     name: "xAI",
     icon: extractFavicon("x.ai"),
   },
@@ -55,6 +34,26 @@ const services = [
   {
     name: "Perplexity",
     icon: extractFavicon("www.perplexity.ai"),
+  },
+  {
+    name: "bilibili",
+    icon: `${BASE_ICON_SET_URL}bilibili_2.png`,
+  },
+  {
+    name: "YouTube",
+    icon: `${BASE_ICON_SET_URL}YouTube.png`,
+  },
+  {
+    name: "Telegram",
+    icon: `${BASE_ICON_SET_URL}Telegram_X.png`,
+  },
+  {
+    name: "X",
+    icon: `${BASE_ICON_SET_URL}X.png`,
+  },
+  {
+    name: "Binance",
+    icon: extractFavicon("www.binance.com"),
   },
   {
     name: "Google",

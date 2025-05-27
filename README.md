@@ -2,7 +2,7 @@
 
 ## Overview
 
-***M***ETA is a JavaScript-based script that simplifies and optimizes the configuration of network tool. It provides extensive support for advanced features and custom configurations.
+META is a JavaScript-based script that simplifies and optimizes the configuration of network tool. It provides extensive support for advanced features and custom configurations.
 
 ## Key Features
 
@@ -20,7 +20,7 @@
   - **Dynamic Nameserver Policies**: Implement sophisticated nameserver policies that adapt based on rulesets and geolocation, providing intelligent DNS resolution tailored to your network's needs.
 
 - **Robust Rule Management**
-  - **Integration with MRS Format Rulesets**: Seamlessly integrates with meticulously designed ***[RFM](https://github.com/xixu-me/RFM)***. The compact MRS format ensures efficient matching and enhanced performance.
+  - **Integration with MRS Format Rulesets**: Seamlessly integrates with meticulously designed [RFM](https://github.com/xixu-me/RFM). The compact MRS format ensures efficient matching and enhanced performance.
   - **Service-Specific Rules**: Automatically generate and manage rules for each service, ensuring that traffic is consistently routed according to predefined policies and enhancing overall network control.
   - **Dynamic Rule Providers**: Integrate with external rule providers to keep your configuration up-to-date with the latest domain and IP rules. This ensures that your network remains resilient against emerging threats and changes.
 

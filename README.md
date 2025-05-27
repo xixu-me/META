@@ -183,4 +183,4 @@ It is strongly recommended to refer to the official documentation of M. when cus
 
 Copyright &copy; [Xi Xu](https://xi-xu.me). All rights reserved.
 
-Licensed under the [GPL-3.0](https://github.com/xixu-me/META/blob/main/LICENSE) license.  
+Licensed under the [GPL-3.0](LICENSE) license.  

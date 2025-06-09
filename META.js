@@ -36,6 +36,11 @@ const services = [
     icon: extractFavicon("www.perplexity.ai"),
   },
   {
+    name: "rednote",
+    icon: extractFavicon("www.xiaohongshu.com"),
+    alias: "Xiaohongshu",
+  },
+  {
     name: "bilibili",
     icon: `${BASE_ICON_SET_URL}bilibili_2.png`,
   },
@@ -65,7 +70,7 @@ const services = [
   },
   {
     name: "Xget",
-    icon: extractFavicon("xget.us.kg"),
+    icon: extractFavicon("xget.xi-xu.me"),
   },
   {
     name: "Cloudflare",
@@ -177,7 +182,7 @@ const locations = [
 // ####################################### DO NOT MODIFY THE CODE BELOW UNLESS YOU KNOW WHAT YOU ARE DOING #######################################
 
 function extractFavicon(domain) {
-  return `https://www.google.com/s2/favicons?sz=256&domain=${domain}`;
+  return `https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${domain}&size=256`;
 }
 
 // General Configuration
@@ -646,8 +651,7 @@ function validateOriginalConfig(config) {
     config.proxies.forEach((proxy, index) => {
       if (!proxy.name || !proxy.type || !proxy.server || !proxy.port) {
         throw new Error(
-          `Invalid proxy number ${
-            index + 1
+          `Invalid proxy number ${index + 1
           } configuration (see https://wiki.\u006D\u0065\u0074\u0061\u0063\u0075\u0062\u0065\u0078.one/en/config/proxies/)`
         );
       }
@@ -661,8 +665,7 @@ function validateOriginalConfig(config) {
       ([name, provider], index) => {
         if (!provider.type || (provider.type === "http" && !provider.url)) {
           throw new Error(
-            `Invalid proxy provider number ${
-              index + 1
+            `Invalid proxy provider number ${index + 1
             } configuration (see https://wiki.\u006D\u0065\u0074\u0061\u0063\u0075\u0062\u0065\u0078.one/en/config/proxy-providers/)`
           );
         }

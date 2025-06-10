@@ -2,84 +2,27 @@
 
 // ################################################### this section can be flexibly customized ###################################################
 
-const SERVICE_ICON_SET_URL =
-  "https://cdn.jsdelivr.net/gh/xixu-me/favicons@assets/";
-
 const LOCATION_ICON_SET_URL = "https://img.icons8.com/color/144/";
 
 const services = [
   // Routing rules are matched in order from top to bottom, with the rule at the top of the list taking precedence over the rules below it.
-  {
-    name: "xAI",
-    icon: `${SERVICE_ICON_SET_URL}xai.png`,
-  },
-  {
-    name: "OpenAI",
-    icon: `${SERVICE_ICON_SET_URL}openai.png`,
-  },
-  {
-    name: "Gemini",
-    icon: `${SERVICE_ICON_SET_URL}gemini.png`,
-    alias: "Google-Gemini",
-  },
-  {
-    name: "NotebookLM",
-    icon: `${SERVICE_ICON_SET_URL}notebooklm.png`,
-    alias: "Google-NotebookLM",
-  },
-  {
-    name: "Anthropic",
-    icon: `${SERVICE_ICON_SET_URL}anthropic.png`,
-  },
-  {
-    name: "Perplexity",
-    icon: `${SERVICE_ICON_SET_URL}perplexity.png`,
-  },
-  {
-    name: "rednote",
-    icon: `${SERVICE_ICON_SET_URL}xiaohongshu.png`,
-    alias: "Xiaohongshu",
-  },
-  {
-    name: "bilibili",
-    icon: `${SERVICE_ICON_SET_URL}bilibili.png`,
-  },
-  {
-    name: "YouTube",
-    icon: `${SERVICE_ICON_SET_URL}youtube.png`,
-  },
-  {
-    name: "Telegram",
-    icon: `${SERVICE_ICON_SET_URL}telegram.png`,
-  },
-  {
-    name: "X",
-    icon: `${SERVICE_ICON_SET_URL}x.png`,
-  },
-  {
-    name: "Binance",
-    icon: `${SERVICE_ICON_SET_URL}binance.png`,
-  },
-  {
-    name: "Google",
-    icon: `${SERVICE_ICON_SET_URL}google.png`,
-  },
-  {
-    name: "Microsoft",
-    icon: `${SERVICE_ICON_SET_URL}microsoft.png`,
-  },
-  {
-    name: "Xget",
-    icon: extractFavicon("xget.xi-xu.me"),
-  },
-  {
-    name: "Cloudflare",
-    icon: `${SERVICE_ICON_SET_URL}cloudflare.png`,
-  },
-  {
-    name: "Speedtest",
-    icon: `${SERVICE_ICON_SET_URL}speedtest.png`,
-  },
+  { name: "xAI", tld: "ai", sld: "x" },
+  { name: "OpenAI", tld: "com" },
+  { name: "Gemini", tld: "google", alias: "Google-Gemini" },
+  { name: "NotebookLM", tld: "google", alias: "Google-NotebookLM" },
+  { name: "Anthropic", tld: "com" },
+  { name: "Perplexity", tld: "ai" },
+  { name: "rednote", tld: "com", sld: "xiaohongshu", alias: "Xiaohongshu" },
+  { name: "bilibili", tld: "com" },
+  { name: "YouTube", tld: "com" },
+  { name: "Telegram", tld: "org" },
+  { name: "X", tld: "com" },
+  { name: "Binance", tld: "com" },
+  { name: "Google", tld: "com" },
+  { name: "Microsoft", tld: "com" },
+  { name: "Xget", domain: "xget.xi-xu.me" },
+  { name: "Cloudflare", tld: "com" },
+  { name: "Speedtest", tld: "com" },
 ];
 
 const locations = [
@@ -334,6 +277,24 @@ const locationPolicyProxyGroupDefaults = {
   proxies: ["REJECT"],
   "include-all": true,
 };
+
+const SERVICE_ICON_SET_URL =
+  "https://raw.githubusercontent.com/xixu-me/favicons/refs/heads/assets/";
+
+function getServiceIcon(service) {
+  if (service.icon) return service.icon;
+  if (service.domain) return extractFavicon(service.domain);
+  if (service.tld) {
+    const secondLevelDomain = service.sld || service.name.toLowerCase();
+    return `${SERVICE_ICON_SET_URL}${secondLevelDomain}.${service.tld}.png`;
+  }
+  console.warn(`No icon configuration for service: ${service.name}`);
+  return null;
+}
+
+services.forEach((service) => {
+  service.icon = getServiceIcon(service);
+});
 
 function generateServiceProxyGroups(items, defaultConfig) {
   return items.map(({ name, icon }) => ({

@@ -1,181 +1,117 @@
-# META - META Enhances Tailored Automation
+# META - Modular Enhanced Traffic Architecture
 
-## Overview
+META is a comprehensive configuration generator for network traffic management, providing intelligent routing rules and proxy configurations for various online services across different geographical locations. It's designed to work with network management tools that support JavaScript parser overrides or YAML configurations.
 
-META is a JavaScript-based script that simplifies and optimizes the configuration of network tool. It provides extensive support for advanced features and custom configurations.
+## Features
 
-## Key Features
-
-- **Dynamic Service and Location Management**
-  - **Service Configuration**: Easily manage a diverse range of services with customizable icons and aliases. Services are defined using a flexible structure, enabling swift updates and seamless additions to accommodate evolving requirements.
-  - **Location-Based Policies**: Implement granular, location-specific rules and icons, supporting a comprehensive list of countries and regions. This feature allows for precise traffic management tailored to geographic locations, enhancing both performance and user experience.
-
-- **Advanced Proxy Group Management**
-  - **Custom Proxy Groups**: Create and manage proxy groups with a variety of strategies such as `select`, `url-test`, `fallback`, and `load-balance`. This flexibility ensures optimized routing and robust failover mechanisms, enhancing network reliability.
-  - **Service and Location Proxy Groups**: Automatically generate proxy groups for each service and location, ensuring traffic is efficiently routed through the most appropriate channels based on predefined policies.
-
-- **Comprehensive DNS Configuration**
-  - **Enhanced DNS Settings**: Supports both Chinese and international nameservers with robust options for DNS over HTTPS (DoH) and DNS over QUIC (DoQ), significantly improving privacy and security. Easily switch between different DNS providers to optimize performance and reliability.
-  - **Fake IP Mode**: Utilize customizable fake IP ranges to enhance user privacy and prevent DNS leaks. The system includes advanced filtering capabilities to exclude specific domains, ensuring that only trusted traffic is managed through fake IPs.
-  - **Dynamic Nameserver Policies**: Implement sophisticated nameserver policies that adapt based on rulesets and geolocation, providing intelligent DNS resolution tailored to your network's needs.
-
-- **Robust Rule Management**
-  - **Integration with MRS Format Rulesets**: Seamlessly integrates with meticulously designed [RFM](https://github.com/xixu-me/RFM). The compact MRS format ensures efficient matching and enhanced performance.
-  - **Service-Specific Rules**: Automatically generate and manage rules for each service, ensuring that traffic is consistently routed according to predefined policies and enhancing overall network control.
-  - **Dynamic Rule Providers**: Integrate with external rule providers to keep your configuration up-to-date with the latest domain and IP rules. This ensures that your network remains resilient against emerging threats and changes.
-
-- **Flexible Configuration Options**
-  - **Comprehensive General Configuration**: Customize global settings such as logging levels, LAN access control, and IPv6 support. These foundational settings allow you to tailor the tool to fit a wide range of network environments and requirements.
-  - **TUN and Sniffer Support**: Enable TUN mode for advanced routing capabilities and domain sniffing for enhanced traffic analysis. These features provide deeper insights and greater control over network traffic.
-
-- **Error Handling and Validation**
-  - **Built-in Configuration Validation**: Utilize built-in validation functions to ensure that configurations are correct and complete before application. This reduces the risk of errors and ensures smooth deployment.
-  - **Detailed Error Reporting**: Receive clear and informative error messages to assist in troubleshooting and configuration adjustments, making it easier to maintain a stable and efficient network setup.
-
-- **Extensible and Customizable**
-  - **Open Source and Community-Driven**: As an public repository, META encourages community contributions and customization. Users can tailor the tool to their specific requirements, fostering a collaborative and innovative development environment.
-  - **Modular Design Architecture**: The codebase is structured for easy integration of new features and services. This modularity ensures that the tool can adapt to future needs and incorporate the latest advancements in network management.
-
-- **Optimized Performance and Security**
-  - **Efficient Resource Utilization**: Designed to optimize system resources, ensuring minimal impact on performance while providing robust network management capabilities.
-  - **Enhanced Security Protocols**: Incorporates advanced security measures to protect against DNS vulnerabilities, unauthorized access, and other potential threats, ensuring a secure networking environment.
-
-By leveraging these key features, META delivers a powerful, flexible, and secure network management solution tailored to meet the diverse needs of its users.
-
-## Demo
-
-***A demo that use META to generate a configuration is available at 👉 <https://github.com/user-attachments/assets/834e050e-a3c7-4b29-b366-1d5a80da90ce> 👈.***
+- **Service-based routing**: Automatically route traffic for popular services (OpenAI, Google, YouTube, Telegram, etc.)
+- **Location-based proxy grouping**: Organize proxies by geographical location
+- **Multiple proxy strategies**: Support for direct selection, auto-testing, fallback, and load balancing
+- **Comprehensive rule providers**: Pre-configured rule sets for applications, domains, and IP ranges
+- **Optimized DNS configuration**: Different nameservers for mainland China and international services
+- **TUN mode support**: System-level traffic capture and routing
+- **Smart proxy group generation**: Automatically create proxy groups based on available proxies
 
 ## Quick Start
 
-Choose one of the following URLs to import the META:
+### Import Options
+
+Choose one of the following URLs to import META into your network management tool:
+
+#### JavaScript Configuration (Dynamic)
 
 | Source | URL |
-| ------------------------- | --- |
-| **GitHub Raw** | <https://raw.githubusercontent.com/xixu-me/META/refs/heads/script/META.js> |
-| **Xget** | <https://xget.xi-xu.me/gh/xixu-me/META/raw/refs/heads/script/META.js> |
-| **jsDelivr** | <https://cdn.jsdelivr.net/gh/xixu-me/META@refs/heads/script/META.js> |
+|--------|-----|
+| GitHub Raw | <https://raw.githubusercontent.com/xixu-me/META/refs/heads/script/META.js> |
+| Xget | <https://xget.xi-xu.me/gh/xixu-me/META/raw/refs/heads/script/META.js> |
+| jsDelivr | <https://cdn.jsdelivr.net/gh/xixu-me/META@refs/heads/script/META.js> |
 
-Alternatively, you can use the pre-generated YAML configuration:
+#### YAML Configuration (Static)
 
 | Source | URL |
-| ------------------------- | --- |
-| **GitHub Raw** | [https://raw.githubusercontent.com/xixu-me/META/refs/heads/config/META.yaml](https://raw.githubusercontent.com/xixu-me/META/refs/heads/config/META.yaml) |
+|--------|-----|
+| GitHub Raw | <https://raw.githubusercontent.com/xixu-me/META/refs/heads/config/META.yaml> |
 
-The YAML configuration is automatically generated from the JavaScript version and automatically updated when the JavaScript version changes. This provides a static configuration option for users who prefer not to use JavaScript overrides.
+The YAML configuration is automatically generated from the JavaScript version and is updated whenever the JavaScript version changes. This provides a static configuration option for users who prefer not to use JavaScript overrides.
 
-## Usage Guide
+## Configuration Structure
 
-Follow these steps to use META:
+The META configuration includes:
 
-### 1. Prepare Base Configuration
+- **General Settings**: Basic configuration for the proxy management system
+- **DNS Settings**: Optimized DNS servers for different scenarios
+- **Proxy Groups**: Organized by services and geographical locations
+- **Routing Rules**: Prioritized rules for traffic routing
+- **Rule Providers**: External rule sets for different services and scenarios
 
-Start with a valid configuration file containing at least one proxy or proxy provider, typically generated by importing a subscription URL into your client.
+## Customization
 
-### 2. Import Script
+The configuration file has a designated customization section at the top:
 
-- **For M.P.**:
-  1. Go to "Override" in the sidebar.
-  2. Import the META via one of the accessible URLs above.
-  3. Click the three dots on the script's card, click "Edit File", edit and save the script, if needed.
-  
-- **For C.V.**:
-  1. Navigate to the "Profiles" page.
-  2. Visit one of the above URLs, select all, and copy to get the current META content.
-  3. Add META content to the editor opened by double-clicking the "Global Extend Script" card.
-  4. Edit before saving if needed.
+```javascript
+// ################################################### this section can be flexibly customized ###################################################
+```
 
-### 3. Apply and Update Configuration
+Here you can modify:
 
-- For M.P., click the three dots on the script's card, click "Edit Info", turn on the "Globally Enabled" option, and save.
-- For C.V., click "Reactivate Profiles" button in the upper right side of the window.
+1. **Services**: Add, remove, or reorder services for routing
+2. **Locations**: Configure geographical locations for proxy organization
+3. **Icons**: Customize the icons for services and locations
 
-### 4. Verify the Configuration
+## Key Components
 
-Check the client's "Execution Log" or "Script Console" to ensure that the META executed successfully to generate the new configuration:
+### Service Configuration
 
-- If your base configuration is correct, it will output the number of identified proxies and proxy providers, and the generated configuration in JSON format.
-- If there are errors, correct your basic configuration according to the error and the URL in the output.
+Services are configured with routing priority from top to bottom. Each service can have:
 
-For other clients, please refer to the official documentation of the corresponding clients.
+- Name
+- Top-level domain (tld)
+- Second-level domain (sld, optional)
+- Domain (optional)
+- Alias (optional)
 
-## Customization Guide
+### Location Configuration
 
-META is highly customizable. Below are some key areas you can modify:
+Locations help organize proxies geographically with:
 
-### 1. **Icon Set URL**
+- Name with emoji
+- Icon URL
+- Filter regex for matching proxies
 
-Change the `BASE_ICON_SET_URL` or `LOCATION_ICON_SET_URL` constants to use a different icon set.
+### Proxy Groups
 
-### 2. **Services**
+Several types of proxy groups are automatically generated:
 
-Modify the `services` array to add or remove services:
+- Main selector groups (PROXY, AUTO, STATIC)
+- Service-specific groups
+- Location-based groups
+- Strategy groups (url-test, fallback, load-balance)
 
-- `name`: Service name.
-- `icon`: URL of the service icon.
-- `alias`: Must be set to the rule set file name when inconsistent with the name.
+### Rules
 
-### 3. **Locations**
+Traffic routing rules are prioritized from top to bottom:
 
-Customize the `locations` array to define geographical locations:
+1. Direct rules (applications, LAN, private)
+2. Advertising blocks
+3. Service-specific rules
+4. Geographic rules
+5. Fallback rules
 
-- `name`: Location name.
-- `icon`: URL of the location icon.
-- `filter`: Regex pattern for matching.
+## Usage Guidelines
 
-### 4. **General Configuration**
-
-Adjust `generalConfig` object, for example:
-
-- `allow-lan`: Set to `true` for LAN access.
-- `log-level`: Set logging level (`silent`, `error`, `warning`, `info`, `debug`).
-- `ipv6`: Enable/disable IPv6 support.
-
-### 5. **DNS**
-
-Modify the `dns` object to change nameservers and DNS policies.
-
-### 6. **Hosts**
-
-Add custom hosts in the `hosts` object.
-
-### 7. **Domain Sniffing**
-
-Enable and configure domain sniffing in the `sniffer` object.
-
-### 8. **TUN**
-
-Customize TUN settings in the `tun` object.
-
-### 9. **Proxy Groups (be cautious)**
-
-Customize the `proxyGroups` array to set proxy strategy according to actual needs.
-
-### 10. **Routing Rules (be cautious)**
-
-Customize the `rules` array for traffic management.
-
-### 11. **Rule Providers (be cautious)**
-
-Add custom rule providers in the `ruleProviders` object.
-
-It is strongly recommended to refer to the official documentation when customizing META, especially the areas marked "be cautious".
-
-## Prerequisites
-
-- A valid configuration file with at least one proxy or proxy provider defined.
-- A compatible client that supports JavaScript overrides.
+1. **First-time setup**: Import the JavaScript or YAML URL into your network management tool
+2. **Proxy source**: Ensure you have configured proxy sources (providers or individual proxies)
+3. **Service selection**: Use the automatically generated service groups to select routing preferences
+4. **Location selection**: Choose geographic routing preferences using location groups
 
 ## Disclaimer
 
-1. This repository is strictly for educational and research purposes.
-2. Use at your own risk. The repository assumes no responsibility for potential issues.
-3. No guarantee of accuracy, completeness, or reliability.
-4. Not liable for data loss or damages.
-5. Ensure compliance with relevant licenses and legal regulations.
-6. No endorsement of third-party hardware/software.
-7. User modifications are their own responsibility.
-8. Terms may change at any time. By using this repository, you agree to these terms.
+- **Usage Responsibility**: META is provided as a configuration tool only. Users are solely responsible for how they implement and use these configurations.
+- **No Warranty**: This software is provided "as is" without warranty of any kind, express or implied. The developers make no guarantees regarding its performance, reliability, or suitability for any purpose.
+- **Legal Compliance**: Users must ensure their use of META complies with all applicable local, national, and international laws and regulations. The use of proxies may be restricted or regulated in certain jurisdictions.
+- **Service Compatibility**: While META aims to provide optimal routing for various services, changes to those services may affect functionality. No guarantee is made regarding compatibility with any specific service.
+- **Security Considerations**: Users should review all configurations before implementation in production environments. The developers are not responsible for any security vulnerabilities that may arise from using these configurations.
+- **Third-Party Services**: META interacts with various third-party services but is not affiliated with, endorsed by, or sponsored by any of these services.
 
 ## License
 

@@ -2,9 +2,6 @@
 
 // ################################################### this section can be flexibly customized ###################################################
 
-const BASE_ICON_SET_URL =
-  "https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/";
-
 const SERVICE_ICON_SET_URL =
   "https://cdn.jsdelivr.net/gh/xixu-me/favicons@assets/";
 
@@ -404,6 +401,9 @@ function generateLocationSelectProxyGroups() {
   }));
 }
 
+const BASE_ICON_SET_URL =
+  "https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/";
+
 const proxyGroups = [
   {
     ...proxyGroupDefaults,
@@ -654,7 +654,8 @@ function validateOriginalConfig(config) {
     config.proxies.forEach((proxy, index) => {
       if (!proxy.name || !proxy.type || !proxy.server || !proxy.port) {
         throw new Error(
-          `Invalid proxy number ${index + 1
+          `Invalid proxy number ${
+            index + 1
           } configuration (see https://wiki.\u006D\u0065\u0074\u0061\u0063\u0075\u0062\u0065\u0078.one/en/config/proxies/)`
         );
       }
@@ -668,7 +669,8 @@ function validateOriginalConfig(config) {
       ([name, provider], index) => {
         if (!provider.type || (provider.type === "http" && !provider.url)) {
           throw new Error(
-            `Invalid proxy provider number ${index + 1
+            `Invalid proxy provider number ${
+              index + 1
             } configuration (see https://wiki.\u006D\u0065\u0074\u0061\u0063\u0075\u0062\u0065\u0078.one/en/config/proxy-providers/)`
           );
         }

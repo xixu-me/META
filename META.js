@@ -239,19 +239,19 @@ const adguardFamilyNameservers = [
 
 const dns = {
   enable: true,
-  "prefer-h3": true,
+  "prefer-h3": false,
   "use-hosts": true,
   "use-system-hosts": false,
-  "respect-rules": false,
+  "respect-rules": true,
   listen: "0.0.0.0:1053",
   ipv6: true,
   "enhanced-mode": "fake-ip",
   "fake-ip-range": "198.18.0.1/16",
   "fake-ip-filter-mode": "blacklist",
   "fake-ip-filter": [
-    "*",
     "+.lan",
     "+.local",
+    "+.direct",
     "time.*.com",
     "ntp.*.com",
     "+.msftconnecttest.com",
@@ -259,6 +259,8 @@ const dns = {
     "localhost.ptlogin2.qq.com",
     "localhost.sec.qq.com",
     "localhost.work.weixin.qq.com",
+    "stun.*.*",
+    "stun.*.*.*",
   ],
   "default-nameserver": [
     "119.29.29.29",
@@ -273,6 +275,7 @@ const dns = {
     "208.67.222.222",
     "208.67.220.220",
   ],
+  "proxy-server-nameserver": chineseNameservers,
   "nameserver-policy": {
     "rule-set:private,direct,geolocation-cn": chineseNameservers,
     "rule-set:proxy": internationalNameservers,

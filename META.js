@@ -22,7 +22,7 @@ const services = [
   { name: "Microsoft", tld: "com" },
   { name: "Xget", domain: "xget.xi-xu.me" },
   { name: "Cloudflare", tld: "com" },
-  { name: "Speedtest", tld: "com" },
+  { name: "Speedtest", tld: "net" },
 ];
 
 const locations = [

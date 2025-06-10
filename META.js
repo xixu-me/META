@@ -5,68 +5,71 @@
 const BASE_ICON_SET_URL =
   "https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/";
 
+const SERVICE_ICON_SET_URL =
+  "https://cdn.jsdelivr.net/gh/xixu-me/favicons@assets/";
+
 const LOCATION_ICON_SET_URL = "https://img.icons8.com/color/144/";
 
 const services = [
   // Routing rules are matched in order from top to bottom, with the rule at the top of the list taking precedence over the rules below it.
   {
     name: "xAI",
-    icon: extractFavicon("x.ai"),
+    icon: `${SERVICE_ICON_SET_URL}xai.png`,
   },
   {
     name: "OpenAI",
-    icon: extractFavicon("openai.com"),
+    icon: `${SERVICE_ICON_SET_URL}openai.png`,
   },
   {
     name: "Gemini",
-    icon: extractFavicon("gemini.google.com"),
+    icon: `${SERVICE_ICON_SET_URL}gemini.png`,
     alias: "Google-Gemini",
   },
   {
     name: "NotebookLM",
-    icon: extractFavicon("notebooklm.google"),
+    icon: `${SERVICE_ICON_SET_URL}notebooklm.png`,
     alias: "Google-NotebookLM",
   },
   {
     name: "Anthropic",
-    icon: extractFavicon("www.anthropic.com"),
+    icon: `${SERVICE_ICON_SET_URL}anthropic.png`,
   },
   {
     name: "Perplexity",
-    icon: extractFavicon("www.perplexity.ai"),
+    icon: `${SERVICE_ICON_SET_URL}perplexity.png`,
   },
   {
     name: "rednote",
-    icon: extractFavicon("www.xiaohongshu.com"),
+    icon: `${SERVICE_ICON_SET_URL}xiaohongshu.png`,
     alias: "Xiaohongshu",
   },
   {
     name: "bilibili",
-    icon: `${BASE_ICON_SET_URL}bilibili_2.png`,
+    icon: `${SERVICE_ICON_SET_URL}bilibili.png`,
   },
   {
     name: "YouTube",
-    icon: `${BASE_ICON_SET_URL}YouTube.png`,
+    icon: `${SERVICE_ICON_SET_URL}youtube.png`,
   },
   {
     name: "Telegram",
-    icon: `${BASE_ICON_SET_URL}Telegram_X.png`,
+    icon: `${SERVICE_ICON_SET_URL}telegram.png`,
   },
   {
     name: "X",
-    icon: `${BASE_ICON_SET_URL}X.png`,
+    icon: `${SERVICE_ICON_SET_URL}x.png`,
   },
   {
     name: "Binance",
-    icon: extractFavicon("www.binance.com"),
+    icon: `${SERVICE_ICON_SET_URL}binance.png`,
   },
   {
     name: "Google",
-    icon: `${BASE_ICON_SET_URL}Google_Search.png`,
+    icon: `${SERVICE_ICON_SET_URL}google.png`,
   },
   {
     name: "Microsoft",
-    icon: `${BASE_ICON_SET_URL}Microsoft.png`,
+    icon: `${SERVICE_ICON_SET_URL}microsoft.png`,
   },
   {
     name: "Xget",
@@ -74,11 +77,11 @@ const services = [
   },
   {
     name: "Cloudflare",
-    icon: `${BASE_ICON_SET_URL}Cloudflare.png`,
+    icon: `${SERVICE_ICON_SET_URL}cloudflare.png`,
   },
   {
     name: "Speedtest",
-    icon: `${BASE_ICON_SET_URL}Speedtest.png`,
+    icon: `${SERVICE_ICON_SET_URL}speedtest.png`,
   },
 ];
 

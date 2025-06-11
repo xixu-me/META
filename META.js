@@ -18,7 +18,7 @@ const services = [
   { name: "Telegram", tld: "org" },
   { name: "X", tld: "com" },
   { name: "Binance", tld: "com" },
-  { name: "Google", tld: "com" },
+  { name: "Google", tld: "google", sld: "about" },
   { name: "Microsoft", tld: "com" },
   { name: "Xget", domain: "xget.xi-xu.me" },
   { name: "Cloudflare", tld: "com" },

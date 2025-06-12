@@ -80,7 +80,7 @@ const locations = [
   {
     name: "Singapore 🇸🇬",
     icon: `${LOCATION_ICON_SET_URL}singapore`,
-    filter: "(?i)\u65b0\u52a0\u5761|Singapore|singapore|sg|🇸🇬",
+    filter: "(?i)\u65b0\u52a0\u5761|Singapore|SG|singapore|sg|🇸🇬",
   },
   {
     name: "Taiwan, China 🇨🇳",

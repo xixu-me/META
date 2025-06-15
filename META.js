@@ -191,20 +191,7 @@ const dns = {
   "enhanced-mode": "fake-ip",
   "fake-ip-range": "198.18.0.1/16",
   "fake-ip-filter-mode": "blacklist",
-  "fake-ip-filter": [
-    "+.lan",
-    "+.local",
-    "+.direct",
-    "time.*.com",
-    "ntp.*.com",
-    "+.msftconnecttest.com",
-    "+.msftncsi.com",
-    "localhost.ptlogin2.qq.com",
-    "localhost.sec.qq.com",
-    "localhost.work.weixin.qq.com",
-    "stun.*.*",
-    "stun.*.*.*",
-  ],
+  "fake-ip-filter": ["rule-set:fake-ip-filter"],
   "default-nameserver": [
     "119.29.29.29",
     "223.5.5.5",
@@ -507,6 +494,13 @@ function generateServiceRuleProviders(services, defaultConfig) {
 }
 
 const ruleProviders = {
+  "fake-ip-filter": {
+    ...ruleProviderDefaults,
+    format: "mrs",
+    behavior: "domain",
+    url: "https://cdn.jsdelivr.net/gh/xixu-me/RFM@universal/fake-ip-filter.mrs",
+    path: "./rulesets/fake-ip-filter.mrs",
+  },
   applications: {
     ...ruleProviderDefaults,
     format: "yaml",

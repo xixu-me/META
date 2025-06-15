@@ -191,7 +191,12 @@ const dns = {
   "enhanced-mode": "fake-ip",
   "fake-ip-range": "198.18.0.1/16",
   "fake-ip-filter-mode": "blacklist",
-  "fake-ip-filter": ["rule-set:fake-ip-filter"],
+  "fake-ip-filter": [
+    "rule-set:fake-ip-filter",
+    "rule-set:direct",
+    "rule-set:private",
+    "rule-set:connectivity-check",
+  ],
   "default-nameserver": [
     "119.29.29.29",
     "223.5.5.5",
@@ -498,8 +503,15 @@ const ruleProviders = {
     ...ruleProviderDefaults,
     format: "mrs",
     behavior: "domain",
-    url: "https://cdn.jsdelivr.net/gh/xixu-me/RFM@universal/fake-ip-filter.mrs",
+    url: "https://cdn.jsdelivr.net/gh/xixu-me/RFM@basic/fake-ip-filter.mrs",
     path: "./rulesets/fake-ip-filter.mrs",
+  },
+  "connectivity-check": {
+    ...ruleProviderDefaults,
+    format: "mrs",
+    behavior: "domain",
+    url: "https://cdn.jsdelivr.net/gh/xixu-me/RFM@universal/connectivity-check.mrs",
+    path: "./rulesets/connectivity-check.mrs",
   },
   applications: {
     ...ruleProviderDefaults,

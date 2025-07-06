@@ -4,25 +4,37 @@
 
 const LOCATION_ICON_SET_URL = "https://img.icons8.com/color/144/";
 
+// Routing rules are matched in order from top to bottom, with the rule at the top of the list taking precedence over the rules below it.
 const services = [
-  // Routing rules are matched in order from top to bottom, with the rule at the top of the list taking precedence over the rules below it.
-  { name: "xAI", tld: "ai", sld: "x" },
-  { name: "OpenAI", tld: "com" },
+  // AI/LLM Services
+  { name: "Anthropic", tld: "com" },
   { name: "Gemini", tld: "google", alias: "Google-Gemini" },
   { name: "NotebookLM", tld: "google", alias: "Google-NotebookLM" },
-  { name: "Anthropic", tld: "com" },
+  { name: "OpenAI", tld: "com" },
   { name: "Perplexity", tld: "ai" },
-  { name: "rednote", tld: "com", sld: "xiaohongshu", alias: "Xiaohongshu" },
+  { name: "xAI", tld: "ai", sld: "x" },
+
+  // Media & Content
   { name: "bilibili", tld: "com" },
+  { name: "Medium", tld: "com" },
   { name: "YouTube", tld: "com" },
+  // Social Media & Communication
+  { name: "rednote", tld: "com", sld: "xiaohongshu", alias: "Xiaohongshu" },
   { name: "Telegram", tld: "org" },
   { name: "X", tld: "com" },
+
+  // Financial Services
   { name: "Binance", tld: "com" },
+  { name: "OKX", tld: "com" },
+
+  // Technology Companies
   { name: "Google", tld: "google", sld: "about" },
   { name: "Microsoft", tld: "com" },
+
+  // Infrastructure & Tools
+  { name: "Speedtest", tld: "net" },
   { name: "Xget", domain: "xget.xi-xu.me" },
   { name: "Cloudflare", tld: "com" },
-  { name: "Speedtest", tld: "net" },
 ];
 
 const locations = [

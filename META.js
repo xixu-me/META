@@ -17,7 +17,10 @@ const services = [
   // Media & Content
   { name: "bilibili", tld: "com" },
   { name: "Medium", tld: "com" },
+  { name: "Netflix", tld: "com" },
+  { name: "Spotify", tld: "com" },
   { name: "YouTube", tld: "com" },
+
   // Social Media & Communication
   { name: "rednote", tld: "com", sld: "xiaohongshu", alias: "Xiaohongshu" },
   { name: "Telegram", tld: "org" },

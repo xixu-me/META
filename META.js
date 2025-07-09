@@ -22,7 +22,7 @@ const services = [
   { name: "YouTube", tld: "com" },
 
   // Social Media & Communication
-  { name: "rednote", tld: "com", sld: "xiaohongshu", alias: "Xiaohongshu" },
+  { name: "rednote", domain: "xiaohongshu.com", alias: "Xiaohongshu" },
   { name: "Telegram", tld: "org" },
   { name: "X", tld: "com" },
 

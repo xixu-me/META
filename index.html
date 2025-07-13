@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>META.js Customizer</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .section {
+            padding: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 20px 0;
+            color: #333;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .service-category {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .category-title {
+            font-weight: 600;
+            margin: 0 0 15px 0;
+            color: #495057;
+            font-size: 1.1rem;
+        }
+        
+        .service-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+        
+        .service-item:hover {
+            background: #e9ecef;
+        }
+        
+        .service-item input[type="checkbox"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+        
+        .service-item label {
+            cursor: pointer;
+            flex: 1;
+            font-weight: 500;
+            color: #495057;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-1px);
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #1e7e34;
+            transform: translateY(-1px);
+        }
+        
+        .output-section {
+            background: #f8f9fa;
+        }
+        
+        .output-area {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #cbd5e0;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            background: #e3f2fd;
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1976d2;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        
+        .error {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            color: #e53e3e;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .info {
+            background: #ebf8ff;
+            border: 1px solid #bee3f8;
+            color: #2b6cb0;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .stats {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>META.js Customizer</h1>
+            <p>Customize your proxy configuration by selecting the services you need</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="section">
+                <h2 class="section-title">Available Services</h2>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="loadAvailableServices()">Refresh Services</button>
+                    <button class="btn btn-secondary" onclick="selectAll()">Select All</button>
+                    <button class="btn btn-secondary" onclick="selectNone()">Select None</button>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalServices">0</div>
+                        <div class="stat-label">Total Services</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="selectedServices">0</div>
+                        <div class="stat-label">Selected</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="availableRulesets">0</div>
+                        <div class="stat-label">Available Rulesets</div>
+                    </div>
+                </div>
+                
+                <div id="servicesContainer" class="services-grid">
+                    <div class="loading">Loading services...</div>
+                </div>
+            </div>
+            
+            <div class="section output-section">
+                <h2 class="section-title">Generated Configuration</h2>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="generateConfig()">Generate META.js</button>
+                    <button class="btn btn-success" onclick="copyToClipboard()">Copy to Clipboard</button>
+                    <button class="btn btn-success" onclick="downloadConfig()">Download META.js</button>
+                </div>
+                
+                <div id="output" class="output-area">
+                    Click "Generate META.js" to create your customized configuration...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let availableServices = [];
+        let availableRulesets = [];
+        let generatedConfig = '';
+        
+        // Load services from META.js and fetch available rulesets
+        async function loadAvailableServices() {
+            try {
+                showLoading();
+                
+                // First, load the built-in services from META.js
+                await loadBuiltInServices();
+                
+                // Then try to fetch available rulesets from GitHub
+                await fetchAvailableRulesets();
+                
+                // Render the services
+                renderServices();
+                updateStats();
+                
+            } catch (error) {
+                showError('Failed to load services: ' + error.message);
+            }
+        }
+        
+        async function loadBuiltInServices() {
+            // Extract services from the current META.js file
+            const services = [
+                // AI/LLM Services
+                { name: "Anthropic", tld: "com", category: "AI/LLM Services" },
+                { name: "Gemini", tld: "google", alias: "Google-Gemini", category: "AI/LLM Services" },
+                { name: "NotebookLM", tld: "google", alias: "Google-NotebookLM", category: "AI/LLM Services" },
+                { name: "OpenAI", tld: "com", category: "AI/LLM Services" },
+                { name: "Perplexity", tld: "ai", category: "AI/LLM Services" },
+                { name: "xAI", tld: "ai", sld: "x", category: "AI/LLM Services" },
+
+                // Media & Content
+                { name: "bilibili", tld: "com", category: "Media & Content" },
+                { name: "Medium", tld: "com", category: "Media & Content" },
+                { name: "Netflix", tld: "com", category: "Media & Content" },
+                { name: "Spotify", tld: "com", category: "Media & Content" },
+                { name: "YouTube", tld: "com", category: "Media & Content" },
+
+                // Social Media & Communication
+                { name: "rednote", domain: "xiaohongshu.com", alias: "Xiaohongshu", category: "Social Media & Communication" },
+                { name: "Telegram", tld: "org", category: "Social Media & Communication" },
+                { name: "X", tld: "com", category: "Social Media & Communication" },
+
+                // Financial Services
+                { name: "Binance", tld: "com", category: "Financial Services" },
+                { name: "OKX", tld: "com", category: "Financial Services" },
+
+                // Technology Companies
+                { name: "Google", tld: "google", sld: "about", category: "Technology Companies" },
+                { name: "Microsoft", tld: "com", category: "Technology Companies" },
+
+                // Infrastructure & Tools
+                { name: "Speedtest", tld: "net", category: "Infrastructure & Tools" },
+                { name: "Xget", domain: "xget.xi-xu.me", category: "Infrastructure & Tools" },
+                { name: "Cloudflare", tld: "com", category: "Infrastructure & Tools" },
+            ];
+            
+            availableServices = services.map(service => ({
+                ...service,
+                selected: true, // Default to selected
+                hasRuleset: true // Assume all built-in services have rulesets
+            }));
+        }
+        
+        async function fetchAvailableRulesets() {
+            try {
+                const response = await fetch('https://api.github.com/repos/xixu-me/RFM/git/trees/universal?recursive=1');
+                
+                if (!response.ok) {
+                    throw new Error(`GitHub API responded with status ${response.status}`);
+                }
+                
+                const data = await response.json();
+                availableRulesets = data.tree
+                    .filter(item => item.path.endsWith('.mrs'))
+                    .map(item => item.path.replace('.mrs', ''));
+                
+                // Update service availability based on actual rulesets
+                availableServices.forEach(service => {
+                    const ruleName = (service.alias || service.name).toLowerCase();
+                    service.hasRuleset = availableRulesets.includes(ruleName);
+                });
+                
+                showInfo(`Found ${availableRulesets.length} available rulesets from GitHub`);
+                
+            } catch (error) {
+                console.warn('Could not fetch rulesets from GitHub:', error.message);
+                showInfo('Using built-in service list. GitHub API may be unavailable.');
+                
+                // Keep all services as having rulesets if we can't verify
+                availableServices.forEach(service => {
+                    service.hasRuleset = true;
+                });
+            }
+        }
+        
+        function renderServices() {
+            const container = document.getElementById('servicesContainer');
+            const categorizedServices = {};
+            
+            // Group services by category
+            availableServices.forEach(service => {
+                const category = service.category || 'Other';
+                if (!categorizedServices[category]) {
+                    categorizedServices[category] = [];
+                }
+                categorizedServices[category].push(service);
+            });
+            
+            // Render categorized services
+            container.innerHTML = Object.keys(categorizedServices).map(category => `
+                <div class="service-category">
+                    <div class="category-title">${category}</div>
+                    ${categorizedServices[category].map(service => `
+                        <div class="service-item">
+                            <input type="checkbox" 
+                                   id="service-${service.name.toLowerCase()}" 
+                                   ${service.selected ? 'checked' : ''}
+                                   ${!service.hasRuleset ? 'disabled' : ''}
+                                   onchange="toggleService('${service.name}')">
+                            <label for="service-${service.name.toLowerCase()}">
+                                ${service.name}
+                                ${service.alias ? ` (${service.alias})` : ''}
+                                ${!service.hasRuleset ? ' [No Ruleset]' : ''}
+                            </label>
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('');
+        }
+        
+        function toggleService(serviceName) {
+            const service = availableServices.find(s => s.name === serviceName);
+            if (service) {
+                service.selected = !service.selected;
+                updateStats();
+            }
+        }
+        
+        function selectAll() {
+            availableServices.forEach(service => {
+                if (service.hasRuleset) {
+                    service.selected = true;
+                }
+            });
+            renderServices();
+            updateStats();
+        }
+        
+        function selectNone() {
+            availableServices.forEach(service => {
+                service.selected = false;
+            });
+            renderServices();
+            updateStats();
+        }
+        
+        function updateStats() {
+            const total = availableServices.length;
+            const selected = availableServices.filter(s => s.selected).length;
+            const withRulesets = availableRulesets.length || availableServices.filter(s => s.hasRuleset).length;
+            
+            document.getElementById('totalServices').textContent = total;
+            document.getElementById('selectedServices').textContent = selected;
+            document.getElementById('availableRulesets').textContent = withRulesets;
+        }
+        
+        function generateConfig() {
+            try {
+                const selectedServices = availableServices.filter(s => s.selected && s.hasRuleset);
+                
+                if (selectedServices.length === 0) {
+                    showError('Please select at least one service with an available ruleset.');
+                    return;
+                }
+                
+                // Generate the META.js configuration
+                generatedConfig = generateMETAJS(selectedServices);
+                
+                // Display the generated config
+                document.getElementById('output').textContent = generatedConfig;
+                
+                showInfo(`Generated configuration with ${selectedServices.length} selected services.`);
+                
+            } catch (error) {
+                showError('Failed to generate configuration: ' + error.message);
+            }
+        }
+        
+        function generateMETAJS(selectedServices) {
+            const timestamp = new Date().toISOString();
+            
+            return `// Generated by META.js Customizer on ${timestamp}
+// Selected services: ${selectedServices.map(s => s.name).join(', ')}
+// from https://github.com/xixu-me/META
+
+// ################################################### this section can be flexibly customized ###################################################
+
+const LOCATION_ICON_SET_URL = "https://img.icons8.com/color/144/";
+
+// Routing rules are matched in order from top to bottom, with the rule at the top of the list taking precedence over the rules below it.
+const services = [
+${selectedServices.map(service => {
+    const props = [];
+    props.push(`name: "${service.name}"`);
+    
+    if (service.domain) {
+        props.push(`domain: "${service.domain}"`);
+    } else {
+        if (service.tld) props.push(`tld: "${service.tld}"`);
+        if (service.sld) props.push(`sld: "${service.sld}"`);
+    }
+    
+    if (service.alias) props.push(`alias: "${service.alias}"`);
+    
+    return `  { ${props.join(', ')} }`;
+}).join(',\n')}
+];
+
+${getMETAJSTemplate()}`;
+        }
+        
+        function getMETAJSTemplate() {
+            // Return the rest of the META.js template
+            return `
+const locations = [
+  {
+    name: "Argentina 🇦🇷",
+    icon: \`\${LOCATION_ICON_SET_URL}argentina\`,
+    filter: "(?i)\\u963f\\u6839\\u5ef7|Argentina|ARG|AR|argentina|arg|ar|🇦🇷",
+  },
+  {
+    name: "Canada 🇨🇦",
+    icon: \`\${LOCATION_ICON_SET_URL}canada\`,
+    filter: "(?i)\\u52a0\\u62ff\\u5927|Canada|CAN|CA|canada|can|ca|🇨🇦",
+  },
+  {
+    name: "Germany 🇩🇪",
+    icon: \`\${LOCATION_ICON_SET_URL}germany\`,
+    filter: "(?i)\\u5fb7\\u56fd|Germany|DEU|DE|germany|deu|de|🇩🇪",
+  },
+  {
+    name: "Hong Kong 🇭🇰",
+    icon: \`\${LOCATION_ICON_SET_URL}hong-kong\`,
+    filter: "(?i)\\u9999\\u6e2f|Hong Kong|HKG|HK|hong kong|hkg|hk|🇭🇰",
+  },
+  {
+    name: "Japan 🇯🇵",
+    icon: \`\${LOCATION_ICON_SET_URL}japan\`,
+    filter: "(?i)\\u65e5\\u672c|Japan|JPN|JP|japan|jpn|jp|🇯🇵",
+  },
+  {
+    name: "Singapore 🇸🇬",
+    icon: \`\${LOCATION_ICON_SET_URL}singapore\`,
+    filter: "(?i)\\u65b0\\u52a0\\u5761|Singapore|SGP|SG|singapore|sgp|sg|🇸🇬",
+  },
+  {
+    name: "South Korea 🇰🇷",
+    icon: \`\${LOCATION_ICON_SET_URL}south-korea\`,
+    filter: "(?i)\\u97e9\\u56fd|South Korea|KOR|KR|south korea|kor|kr|🇰🇷",
+  },
+  {
+    name: "Taiwan 🇹🇼",
+    icon: \`\${LOCATION_ICON_SET_URL}taiwan\`,
+    filter: "(?i)\\u53f0\\u6e7e|Taiwan|TWN|TW|taiwan|twn|tw|🇹🇼",
+  },
+  {
+    name: "United Kingdom 🇬🇧",
+    icon: \`\${LOCATION_ICON_SET_URL}great-britain\`,
+    filter: "(?i)\\u82f1\\u56fd|United Kingdom|GBR|GB|united kingdom|gbr|gb|🇬🇧",
+  },
+  {
+    name: "United States 🇺🇸",
+    icon: \`\${LOCATION_ICON_SET_URL}usa\`,
+    filter: "(?i)\\u7f8e\\u56fd|United States|USA|US|united states|usa|us|🇺🇸",
+  },
+];
+
+// ################################################### everything below is automated ###################################################
+
+const BASE_ICON_SET_URL = "https://img.icons8.com/color/144/";
+
+const proxyGroupDefaults = {
+  icon: \`\${BASE_ICON_SET_URL}globe.png\`,
+  interval: 300,
+  timeout: 3000,
+  url: "https://www.gstatic.com/generate_204",
+  lazy: true,
+  "max-failed-times": 3,
+  "hidden-from-group-selector": true,
+};
+
+const locationPolicyProxyGroupDefaults = {
+  ...proxyGroupDefaults,
+  "include-all": true,
+  tolerance: 50,
+  "expected-status": "204",
+};
+
+const ruleProviderDefaults = {
+  type: "http",
+  interval: 86400,
+};
+
+const serviceProxyGroupProxies = ["STATIC", "DIRECT"];
+
+function getServiceIcon(service) {
+  const name = service.name.toLowerCase();
+  const iconMapping = {
+    anthropic: "anthropic.png",
+    gemini: "google-gemini.png", 
+    notebooklm: "google-docs.png",
+    openai: "chatgpt.png",
+    perplexity: "search.png",
+    xai: "artificial-intelligence.png",
+    bilibili: "bilibili.png",
+    medium: "medium.png", 
+    netflix: "netflix.png",
+    spotify: "spotify.png",
+    youtube: "youtube.png",
+    rednote: "xiaohongshu.png",
+    telegram: "telegram.png",
+    x: "twitter.png",
+    binance: "binance.png",
+    okx: "cryptocurrency.png",
+    google: "google.png",
+    microsoft: "microsoft.png",
+    speedtest: "speedometer.png",
+    xget: "download.png",
+    cloudflare: "cloudflare.png"
+  };
+  
+  return \`\${BASE_ICON_SET_URL}\${iconMapping[name] || 'globe.png'}\`;
+}
+
+services.forEach((service) => {
+  service.icon = getServiceIcon(service);
+});
+
+function generateServiceProxyGroups(items, defaultConfig) {
+  return items.map(({ name, icon }) => ({
+    ...defaultConfig,
+    name,
+    icon,
+    type: "select",
+    proxies: serviceProxyGroupProxies,
+  }));
+}
+
+function generateLocationPolicyProxyGroups(
+  items,
+  defaultConfig,
+  type,
+  extraProps = {}
+) {
+  const getStrategyName = (type, strategy) => {
+    switch (type) {
+      case "url-test":
+        return "AUTO";
+      case "fallback":
+        return "FALLBACK";
+      case "load-balance":
+        switch (strategy) {
+          case "consistent-hashing":
+            return "LOAD BALANCING (consistent hashing)";
+          case "round-robin":
+            return "LOAD BALANCING (round-robin)";
+          case "sticky-sessions":
+            return "LOAD BALANCING (sticky sessions)";
+          default:
+            return "LOAD BALANCING";
+        }
+      default:
+        return type.toUpperCase();
+    }
+  };
+  return items.map(({ name, icon, filter }) => {
+    const strategyName = getStrategyName(type, extraProps.strategy);
+    const emoji = name.split(" ").pop();
+    const newName = \`\${strategyName} \${emoji}\`;
+    return {
+      ...defaultConfig,
+      name: newName,
+      type,
+      icon,
+      filter,
+      ...extraProps,
+    };
+  });
+}
+
+const proxyGroups = [
+  {
+    ...proxyGroupDefaults,
+    name: "STATIC",
+    type: "select",
+    "include-all": true,
+    icon: \`\${BASE_ICON_SET_URL}Static.png\`,
+  },
+  ...generateServiceProxyGroups(services, proxyGroupDefaults),
+  {
+    ...proxyGroupDefaults,
+    name: "Others",
+    type: "select",
+    proxies: [...serviceProxyGroupProxies],
+    icon: \`\${BASE_ICON_SET_URL}Final.png\`,
+  },
+  {
+    ...proxyGroupDefaults,
+    name: "Advertising",
+    type: "select",
+    proxies: ["REJECT", "DIRECT", "STATIC"],
+    icon: \`\${BASE_ICON_SET_URL}Advertising.png\`,
+  },
+  {
+    ...locationPolicyProxyGroupDefaults,
+    name: "Mainland China 🇨🇳",
+    type: "select",
+    icon: \`\${LOCATION_ICON_SET_URL}china\`,
+    proxies: ["DIRECT"],
+    "include-all": true,
+    filter:
+      "(?i)\\u5927\\u9646|\\u4e2d\\u56fd|\\u7535\\u4fe1|\\u79fb\\u52a8|\\u8054\\u901a|Mainland|China|CN|mainland|china|cn|🇨🇳",
+  },
+  ...generateLocationPolicyProxyGroups(
+    locations,
+    locationPolicyProxyGroupDefaults,
+    "url-test",
+    {
+      tolerance: 50,
+    }
+  ),
+  ...generateLocationPolicyProxyGroups(
+    locations,
+    locationPolicyProxyGroupDefaults,
+    "fallback"
+  ),
+  ...generateLocationPolicyProxyGroups(
+    locations,
+    locationPolicyProxyGroupDefaults,
+    "load-balance",
+    {
+      strategy: "round-robin",
+    }
+  ),
+  ...generateLocationPolicyProxyGroups(
+    locations,
+    locationPolicyProxyGroupDefaults,
+    "load-balance",
+    {
+      strategy: "consistent-hashing",
+    }
+  ),
+  ...generateLocationPolicyProxyGroups(
+    locations,
+    locationPolicyProxyGroupDefaults,
+    "load-balance",
+    {
+      strategy: "sticky-sessions",
+    }
+  ),
+];
+
+function generateServiceRuleProviders(services, defaultConfig) {
+  return services.reduce((acc, { name, alias }) => {
+    const ruleName = alias || name;
+    acc[name.toLowerCase()] = {
+      ...defaultConfig,
+      format: "mrs",
+      behavior: "domain",
+      url: \`https://cdn.jsdelivr.net/gh/xixu-me/RFM@universal/\${ruleName.toLowerCase()}.mrs\`,
+      path: \`./rulesets/\${name.toLowerCase()}.mrs\`,
+    };
+    return acc;
+  }, {});
+}
+
+const ruleProviders = {
+  "fake-ip-filter": {
+    ...ruleProviderDefaults,
+    format: "mrs",
+    behavior: "domain",
+    url: "https://cdn.jsdelivr.net/gh/xixu-me/RFM@basic/fake-ip-filter.mrs",
+    path: "./rulesets/fake-ip-filter.mrs",
+  },
+  "connectivity-check": {
+    ...ruleProviderDefaults,
+    format: "mrs",
+    behavior: "domain",
+    url: "https://cdn.jsdelivr.net/gh/xixu-me/RFM@universal/connectivity-check.mrs",
+    path: "./rulesets/connectivity-check.mrs",
+  },
+  applications: {
+    ...ruleProviderDefaults,
+    format: "yaml",
+    behavior: "classical",
+    url: "https://cdn.jsdelivr.net/gh/xixu-me/RFM@basic/applications.yaml",
+    path: "./rulesets/applications.yaml",
+  },
+  lancidr: {
+    ...ruleProviderDefaults,
+    format: "mrs",
+    behavior: "ipcidr",
+    url: "https://cdn.jsdelivr.net/gh/xixu-me/RFM@basic/lancidr.mrs",
+    path: "./rulesets/lancidr.mrs",
+  },
+  cncidr: {
+    ...ruleProviderDefaults,
+    format: "mrs",
+    behavior: "ipcidr",
+    url: "https://cdn.jsdelivr.net/gh/xixu-me/RFM@basic/cncidr.mrs",
+    path: "./rulesets/cncidr.mrs",
+  },
+  telegramcidr: {
+    ...ruleProviderDefaults,
+    format: "mrs",
+    behavior: "ipcidr",
+    url: "https://cdn.jsdelivr.net/gh/xixu-me/RFM@basic/telegramcidr.mrs",
+    path: "./rulesets/telegramcidr.mrs",
+  },
+  "geolocation-cn": {
+    ...ruleProviderDefaults,
+    format: "mrs",
+    behavior: "domain",
+    url: "https://cdn.jsdelivr.net/gh/xixu-me/RFM@universal/geolocation-cn.mrs",
+    path: "./rulesets/geolocation-cn.mrs",
+  },
+  reject: {
+    ...ruleProviderDefaults,
+    format: "mrs",
+    behavior: "domain",
+    url: "https://cdn.jsdelivr.net/gh/xixu-me/RFM@basic/reject.mrs",
+    path: "./rulesets/reject.mrs",
+  },
+  "win-spy": {
+    ...ruleProviderDefaults,
+    format: "mrs",
+    behavior: "domain",
+    url: "https://cdn.jsdelivr.net/gh/xixu-me/RFM@universal/win-spy.mrs",
+    path: "./rulesets/win-spy.mrs",
+  },
+  ...generateServiceRuleProviders(services, ruleProviderDefaults),
+};
+
+// generate configuration using the above settings
+
+function validateOriginalConfig(config) {
+  if (!config)
+    throw new Error("Configuration object cannot be null or undefined");
+  const proxyCount = Array.isArray(config.proxies) ? config.proxies.length : 0;
+  const proxyProviderCount = Object.keys(
+    config["proxy-providers"] || {}
+  ).length;
+  if (proxyCount === 0 && proxyProviderCount === 0)
+    throw new Error(
+      "The original configuration must contain a non-empty proxies array (see https://wiki.\\u006D\\u0065\\u0074\\u0061\\u0063\\u0075\\u0062\\u0065\\u0078.one/en/config/proxies/) or a proxy-providers object with at least one property (see https://wiki.\\u006D\\u0065\\u0074\\u0061\\u0063\\u0075\\u0062\\u0065\\u0078.one/en/config/proxy-providers/)"
+    );
+  if (proxyCount > 0) {
+    config.proxies.forEach((proxy, index) => {
+      if (!proxy.name || !proxy.type || !proxy.server || !proxy.port) {
+        throw new Error(
+          \`Invalid proxy number \${
+            index + 1
+          } configuration (see https://wiki.\\u006D\\u0065\\u0074\\u0061\\u0063\\u0075\\u0062\\u0065\\u0078.one/en/config/proxies/)\`
+        );
+      }
+    });
+    console.log(
+      \`The original configuration contains \${proxyCount} proxies, which will be preserved\`
+    );
+  }
+  if (proxyProviderCount > 0) {
+    Object.keys(config["proxy-providers"]).forEach((key) => {
+      const provider = config["proxy-providers"][key];
+      if (!provider.url && !provider.path) {
+        throw new Error(
+          \`Invalid proxy provider "\${key}" configuration (see https://wiki.\\u006D\\u0065\\u0074\\u0061\\u0063\\u0075\\u0062\\u0065\\u0078.one/en/config/proxy-providers/)\`
+        );
+      }
+    });
+    console.log(
+      \`The original configuration contains \${proxyProviderCount} proxy providers, which will be preserved\`
+    );
+  }
+}
+
+function main(config) {
+  try {
+    validateOriginalConfig(config);
+    const rules = [
+      "RULE-SET,fake-ip-filter,DIRECT",
+      "RULE-SET,applications,DIRECT",
+      "RULE-SET,connectivity-check,DIRECT",
+      ...services.map(({ name }) => \`RULE-SET,\${name.toLowerCase()},\${name}\`),
+      "RULE-SET,telegramcidr,Telegram",
+      "RULE-SET,lancidr,DIRECT",
+      "RULE-SET,cncidr,Mainland China 🇨🇳",
+      "RULE-SET,geolocation-cn,Mainland China 🇨🇳",
+      "RULE-SET,win-spy,Advertising",
+      "RULE-SET,reject,Advertising",
+      "MATCH,Others",
+    ];
+    config = Object.assign(config, {
+      "mixed-port": 7890,
+      "redir-port": 7892,
+      "tproxy-port": 7893,
+      "allow-lan": false,
+      "bind-address": "*",
+      mode: "rule",
+      "log-level": "info",
+      ipv6: true,
+      "external-controller": "127.0.0.1:9090",
+      "external-ui": "ui",
+      "external-ui-name": "metacubexd",
+      "external-ui-url":
+        "https://github.com/metacubex/metacubexd/archive/refs/heads/gh-pages.zip",
+      secret: "",
+      "interface-name": "",
+      "routing-mark": 6666,
+      "unified-delay": true,
+      "tcp-concurrent": true,
+      "enable-process": true,
+      "find-process-mode": "strict",
+      "global-client-fingerprint": "chrome",
+      "global-ua": "clash.meta",
+      geodata: {
+        mode: "standard",
+        loader: "standard",
+        "auto-update": false,
+        "update-interval": 24,
+        "geoip-url":
+          "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat",
+        "geosite-url":
+          "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat",
+        "mmdb-url":
+          "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb",
+        "asn-url":
+          "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb",
+      },
+      profile: {
+        "store-selected": true,
+        "store-fake-ip": true,
+      },
+      sniffer: {
+        enable: true,
+        "override-destination": true,
+        sniff: {
+          HTTP: {
+            ports: ["80", "8080-8880"],
+            "override-destination": true,
+          },
+          TLS: {
+            ports: ["443", "8443"],
+          },
+          QUIC: {
+            ports: ["443", "8443"],
+          },
+        },
+        "skip-domain": ["Mijia Cloud", "dlg.io.mi.com"],
+      },
+      tun: {
+        enable: false,
+        stack: "mixed",
+        "dns-hijack": ["any:53", "tcp://any:53"],
+        "auto-route": true,
+        "auto-redirect": true,
+        "auto-detect-interface": true,
+      },
+      dns: {
+        enable: true,
+        listen: "0.0.0.0:1053",
+        ipv6: true,
+        "use-system-hosts": true,
+        "cache-algorithm": "arc",
+        "enhanced-mode": "fake-ip",
+        "fake-ip-range": "198.18.0.1/16",
+        "fake-ip-filter": [],
+        "default-nameserver": ["223.5.5.5", "8.8.4.4"],
+        nameserver: ["https://223.5.5.5/dns-query", "https://8.8.4.4/dns-query"],
+        "proxy-server-nameserver": ["https://223.5.5.5/dns-query"],
+        "nameserver-policy": {
+          "geosite:private,cn,geolocation-cn": [
+            "https://223.5.5.5/dns-query",
+            "https://1.12.12.12/dns-query",
+          ],
+        },
+      },
+      "proxy-groups": proxyGroups,
+      rules,
+      "rule-providers": ruleProviders,
+    });
+    console.log("The generated configuration is as follows");
+    console.log(config);
+    return config;
+  } catch (error) {
+    console.error(
+      \`An error occurred during configuration generation: \${error.message}\`
+    );
+    return { error: error.message, originalConfig: config };
+  }
+}
+
+// Export for Node.js usage
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = main;
+}`;
+        }
+        
+        function copyToClipboard() {
+            if (!generatedConfig) {
+                showError('Please generate a configuration first.');
+                return;
+            }
+            
+            navigator.clipboard.writeText(generatedConfig).then(() => {
+                showInfo('Configuration copied to clipboard!');
+            }).catch(err => {
+                showError('Failed to copy to clipboard: ' + err.message);
+            });
+        }
+        
+        function downloadConfig() {
+            if (!generatedConfig) {
+                showError('Please generate a configuration first.');
+                return;
+            }
+            
+            const blob = new Blob([generatedConfig], { type: 'text/javascript' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'META.js';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showInfo('Configuration downloaded as META.js');
+        }
+        
+        function showLoading() {
+            document.getElementById('servicesContainer').innerHTML = '<div class="loading">Loading services...</div>';
+        }
+        
+        function showError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error';
+            errorDiv.textContent = message;
+            
+            // Find a good place to show the error
+            const container = document.querySelector('.section');
+            container.insertBefore(errorDiv, container.firstChild);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                if (errorDiv.parentNode) {
+                    errorDiv.parentNode.removeChild(errorDiv);
+                }
+            }, 5000);
+        }
+        
+        function showInfo(message) {
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'info';
+            infoDiv.textContent = message;
+            
+            // Find a good place to show the info
+            const container = document.querySelector('.section');
+            container.insertBefore(infoDiv, container.firstChild);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                if (infoDiv.parentNode) {
+                    infoDiv.parentNode.removeChild(infoDiv);
+                }
+            }, 3000);
+        }
+        
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAvailableServices();
+        });
+    </script>
+</body>
+</html>`;

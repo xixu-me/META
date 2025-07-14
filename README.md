@@ -30,7 +30,7 @@ Choose one of the following URLs to import META into your network management too
 
 | Source | URL |
 |--------|-----|
-| GitHub Raw | <https://raw.githubusercontent.com/xixu-me/META/refs/heads/config/META.yaml> |
+| GitHub | <https://github.com/xixu-me/META/blob/config/META.yaml> |
 
 The YAML configuration is automatically generated from the JavaScript version and is updated whenever the JavaScript version changes. This provides a static configuration option for users who prefer not to use JavaScript overrides.
 

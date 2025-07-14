@@ -58,7 +58,7 @@ Here you can modify:
 2. **Locations**: Configure geographical locations for proxy organization
 3. **Icons**: Customize the icons for services and locations
 
-For a user-friendly way to create custom META.js, use the **[META.js Customizer](https://github.com/xixu-me/META.js-Customizer)** web app at [metajs.xi-xu.me](https://metajs.xi-xu.me). This tool provides an intuitive interface to select services and generate personalized configurations.
+For a user-friendly way to create custom the JavaScript, use the **[META.js Customizer](https://github.com/xixu-me/META.js-Customizer)** web app at [metajs.xi-xu.me](https://metajs.xi-xu.me). This tool provides an intuitive interface to select services and generate personalized configurations.
 
 ## Key Components
 

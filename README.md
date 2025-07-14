@@ -18,7 +18,7 @@ META is a comprehensive configuration generator for network traffic management, 
 
 Choose one of the following URLs to import META into your network management tool:
 
-#### JavaScript Configuration (Dynamic)
+#### JavaScript
 
 | Source | URL |
 |--------|-----|
@@ -26,7 +26,7 @@ Choose one of the following URLs to import META into your network management too
 | Xget | <https://xget.xi-xu.me/gh/xixu-me/META/raw/refs/heads/script/META.js> |
 | jsDelivr | <https://cdn.jsdelivr.net/gh/xixu-me/META@refs/heads/script/META.js> |
 
-#### YAML Configuration (Static)
+#### YAML
 
 | Source | URL |
 |--------|-----|

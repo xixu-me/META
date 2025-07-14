@@ -71,16 +71,6 @@ META integrates with **[RFM (Rulesets for META)](https://github.com/xixu-me/RFM)
 - **Comprehensive coverage**: Aggregated from multiple reliable sources
 - **Optimized processing**: Redundancy removal and intelligent domain handling
 
-### Service Configuration
-
-Services are configured with routing priority from top to bottom. Each service can have:
-
-- Name
-- Top-level domain (tld)
-- Second-level domain (sld, optional)
-- Domain (optional)
-- Alias (optional)
-
 ### Location Configuration
 
 Locations help organize proxies geographically with:

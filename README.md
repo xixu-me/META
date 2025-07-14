@@ -46,7 +46,7 @@ The META configuration includes:
 
 ## Customization
 
-The configuration file has a designated customization section at the top:
+The JavaScript has a designated customization section at the top:
 
 ```javascript
 // ################################################### this section can be flexibly customized ###################################################

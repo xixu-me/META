@@ -2,8 +2,6 @@
 
 // ################################################### this section can be flexibly customized ###################################################
 
-const LOCATION_ICON_SET_URL = "https://img.icons8.com/color/144/";
-
 // Routing rules are matched in order from top to bottom, with the rule at the top of the list taking precedence over the rules below it.
 const services = [
   // AI/LLM Services
@@ -39,6 +37,8 @@ const services = [
   { name: "Xget", domain: "xget.xi-xu.me" },
   { name: "Cloudflare", tld: "com" },
 ];
+
+const LOCATION_ICON_SET_URL = "https://img.icons8.com/color/144/";
 
 const locations = [
   {

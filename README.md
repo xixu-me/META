@@ -7,7 +7,7 @@ META is a comprehensive configuration generator for network traffic management, 
 - **Service-based routing**: Automatically route traffic for popular services (OpenAI, Google, YouTube, Telegram, etc.)
 - **Location-based proxy grouping**: Organize proxies by geographical location
 - **Multiple proxy strategies**: Support for direct selection, auto-testing, fallback, and load balancing
-- **Comprehensive rule providers**: Pre-configured rule sets for applications, domains, and IP ranges
+- **Comprehensive rule providers**: Pre-configured rulesets for applications, domains, and IP ranges
 - **Optimized DNS configuration**: Different nameservers for mainland China and international services
 - **TUN mode support**: System-level traffic capture and routing
 - **Smart proxy group generation**: Automatically create proxy groups based on available proxies
@@ -42,7 +42,7 @@ The META configuration includes:
 - **DNS Settings**: Optimized DNS servers for different scenarios
 - **Proxy Groups**: Organized by services and geographical locations
 - **Routing Rules**: Prioritized rules for traffic routing
-- **Rule Providers**: External rule sets for different services and scenarios
+- **Rule Providers**: External rulesets for different services and scenarios
 
 ## Customization
 
@@ -58,7 +58,18 @@ Here you can modify:
 2. **Locations**: Configure geographical locations for proxy organization
 3. **Icons**: Customize the icons for services and locations
 
+For a user-friendly way to create custom META.js, use the **[META.js Customizer](https://github.com/xixu-me/META.js-Customizer)** web app at [metajs.xi-xu.me](https://metajs.xi-xu.me). This tool provides an intuitive interface to select services and generate personalized configurations.
+
 ## Key Components
+
+### Rule Providers
+
+META integrates with **[RFM (Rulesets for META)](https://github.com/xixu-me/RFM)** for comprehensive and frequently updated rulesets. RFM provides:
+
+- **Multiple format support**: Both MRS (binary) and YAML formats
+- **Frequent updates**: Rulesets rebuilt multiple times daily
+- **Comprehensive coverage**: Aggregated from multiple reliable sources
+- **Optimized processing**: Redundancy removal and intelligent domain handling
 
 ### Service Configuration
 
@@ -99,10 +110,16 @@ Traffic routing rules are prioritized from top to bottom:
 
 ## Usage Guidelines
 
-1. **First-time setup**: Import the JavaScript or YAML URL into your network management tool
-2. **Proxy source**: Ensure you have configured proxy sources (providers or individual proxies)
-3. **Service selection**: Use the automatically generated service groups to select routing preferences
-4. **Location selection**: Choose geographic routing preferences using location groups
+1. **Easy customization**: Use the [META.js Customizer](https://github.com/xixu-me/META.js-Customizer) for an intuitive configuration experience
+2. **First-time setup**: Import the JavaScript or YAML into your network management tool
+3. **Proxy source**: Ensure you have configured proxy sources (providers or individual proxies)
+4. **Service selection**: Use the automatically generated service groups to select routing preferences
+5. **Location selection**: Choose geographic routing preferences using location groups
+
+## Related Projects
+
+- **[META.js Customizer](https://github.com/xixu-me/META.js-Customizer)**: Web-based configuration generator with intuitive interface
+- **[RFM (Rulesets for META)](https://github.com/xixu-me/RFM)**: Comprehensive and frequently updated rulesets collection
 
 ## Disclaimer
 

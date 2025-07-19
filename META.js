@@ -12,6 +12,14 @@ const services = [
   { name: "Perplexity", tld: "ai" },
   { name: "xAI", tld: "ai", sld: "x" },
 
+  // Tools & Utilities
+  {
+    name: "Translate",
+    domain: "translate.google.com",
+    alias: "Google-Translate",
+  },
+  { name: "DeepL", tld: "com" },
+
   // Media & Content
   { name: "bilibili", tld: "com" },
   { name: "Medium", tld: "com" },
@@ -32,7 +40,7 @@ const services = [
   { name: "Google", tld: "google", sld: "about" },
   { name: "Microsoft", tld: "com" },
 
-  // Infrastructure & Tools
+  // Infrastructure
   { name: "Speedtest", tld: "net" },
   { name: "Xget", domain: "xget.xi-xu.me" },
   { name: "Cloudflare", tld: "com" },
